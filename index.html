@@ -1,328 +1,190 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Unraveled | Under Construction</title>
-    <link rel="icon" type="image/x-icon" href="/unrav.ico">
-    <link rel="manifest" href="manifest.json" />
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
-    <style>
-        html, body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-}
-
-body {
-    font-family: 'Poppins', sans-serif;
-    background: url('massage.webp') no-repeat center center fixed;
-    background-size: cover;
-    color: white;
-    display: flex;
-    justify-content: center;
-    text-align: center;
-    overflow-x: hidden; /* allow scrolling on Y if needed */
-    position: relative;
-    min-height: 100vh;
-}
-
-.overlay {
-    position: fixed; /* change from absolute to fixed */
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    backdrop-filter: blur(15px);
-    background: rgba(0, 0, 20, 0.5);
-    z-index: 0;
-}
-
-         .container {
-            display: flex;
-            flex-direction: column;
-            position: relative;
-            z-index: 1;
-            background: rgba(200, 200, 200, 0.7);
-            padding: 10% 5% 10% 5%;
-            border-radius: 20px;
-            width: 100%;
-            height: auto;
-            margin-top: 0;
-            box-shadow: 0px 0px 10px rgba(255, 255, 255, 0);
-
-        }
-
-        h1 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            margin-left: -25%;
-            color: #00ffcc;
-            width: 150%;
-            animation: fadeIn .95s ease-out 1.5s forwards;
-            opacity: 0;
-        }
-
-        p {
-            font-size: 1.2rem;
-            color: #ccc;
-            width: 100%;
-            animation: fadeIn 0.95s ease-out 2.5s forwards;
-            opacity: 0;
-
-        }
-
-        .loader {
-            margin: 80px auto 0;
-            height: 5px;
-            width: 80%;
-            background: linear-gradient(90deg, #00ffcc, #006666);
-            background-size: 200% 100%;
-            animation: shimmer 2s infinite;
-            border-radius: 10px;
-        }
-
-        @keyframes shimmer {
-            0% {
-                background-position: 200% 0;
-            }
-
-            100% {
-                background-position: -200% 0;
-            }
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0px);
-            }
-        }
-        @keyframes fadeInLogo {
-            from {
-                opacity: 0;
-                transform: translateY(-50px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0px);
-            }
-        }
-
-        footer {
-            position: absolute;
-            bottom: 20px;
-            font-size: 0.85rem;
-            color: #888;
-            width: 100%;
-            text-align: center;
-        }
-
-        .profile-card {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 20px;
-        }
-
-        .profile-wrapper {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 20px;
-        }
-
-        .profile-image-container {
-            position: relative;
-            display: inline-block;
-        }
-
-        .profile-card {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 20px;
-        }
-
-        .profile-wrapper {
-            position: relative;
-            display: inline-block;
-        }
-
-        .profile-pic {
-            width: 20rem;
-            height: 20rem;
-            border-radius: 5%;
-            border: 0px solid #00000000;
-            background-color: rgba(255, 255, 255, 0.1);
-            box-shadow: 0px 0px 3px rgba(255, 255, 255, 0.5);
-            object-fit: cover;            
-            animation: fadeInLogo 1.5s ease-out forwards;
-            opacity: 0;
-            /* Start hidden for animation */
-        }
-
-        .construction-icon {
-            position: absolute;
-            bottom: -5px;
-            right: -5px;
-            width: 4rem;
-            height: 4rem;
-            background: rgba(0, 0, 0, 0);
-            border-radius: 50%;
-            padding: 5px;
-            box-shadow: 0 0 8px rgba(0, 0, 0, 0);
-            display: none;
-        }
-
-        /* Mobile Styles */
-        @media (max-width: 600px) {
-
-            .divider {
-                display: none;
-            }
-
-            .mobile-overlay {
-                display: block;
-                position: absolute;
-                bottom: 0;
-                right: 0;
-                width: 3rem;
-                height: 3rem;
-                background: transparent;
-            }
-
-            .profile-card {
-                display: flex;
-                justify-content: center;
-                margin-bottom: 20px;
-            }
-
-            .profile-wrapper {
-                position: relative;
-                display: inline-block;
-            }
-
-            .profile-pic {
-                width: 15rem;
-                height: 15rem;
-                border-radius: 5%;
-                border: 0px solid #00000000;
-                object-fit: cover;
-                margin-top: 5rem;
-                background-color: rgba(255, 255, 255, 0.1);
-                box-shadow: 0px 0px 3px rgba(255, 255, 255, 0.5);
-            }
-
-            .construction-icon {
-                position: absolute;
-                bottom: -5px;
-                right: -5px;
-                width: 6rem;
-                height: 6rem;
-                background: rgba(0, 0, 0, 0.9);
-                border-radius: 50%;
-                padding: 5px;
-                box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
-            }
-            h1 {
-            font-size: 1.75rem;
-            margin-bottom: 20px;
-            margin-left: -25%;
-            color: #00ffcc;
-            width: 150%;
-            animation: fadeIn .95s ease-out 1.5s forwards;
-            opacity: 0;
-        }
-
-        }
-
-        /* Default: hide mobile overlay */
-        .mobile-overlay {
-            display: none;
-        }
-    </style>
-</head>
-
-<body>
-    <div class="overlay"></div>
-    <div class="container" id="container">
-        <div class="profile-card">
-            <div class="profile-wrapper">
-                <div class="profile-image-container">
-                    <img src="unrav.png" alt="Unraveled" class="profile-pic">
-                    <img src="construction-icon.png" alt="Under Construction" class="construction-icon mobile-overlay">
-                </div>
-                <div class="divider"></div>
-                <img src="construction-icon.png" alt="Under Construction" class="construction-icon">
-            </div>
-        </div>
-
-        <h1>Unraveled</h1>
-      <h1>By: Autumn Morrow</h1>
-        <p>This site is currently under construction.<br><br>
-            Check back soon to book appointments and more.</p>
-        <div class="loader_"></div>
-    </div>
-    <footer>© 2025 Unraveled Massage Therapy | All rights reserved</footer>
-</body>
-<script>
-    // Service Worker Registration
-    if ('serviceWorker' in navigator) {
-        window.addEventListener('load', () => {
-            navigator.serviceWorker.register('/service-worker.js')
-                .then(registration => {
-                    console.log('ServiceWorker registered with scope:', registration.scope);
-                })
-                .catch(error => {
-                    console.error('ServiceWorker registration failed:', error);
-                });
-        });
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Unraveled | Under Construction</title>
+  <link rel="icon" type="image/x-icon" href="/unrav.ico" />
+  <link rel="manifest" href="manifest.json" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet" />
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      font-family: 'Poppins', sans-serif;
+      background: url('massage.webp') no-repeat center center fixed;
+      background-size: cover;
+      color: white;
     }
-</script>
-<script>
+
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100vh;
+      width: 100vw;
+      backdrop-filter: blur(15px);
+      background: rgba(0, 0, 20, 0.5);
+      z-index: 0;
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
+      height: 100vh;
+      width: 100vw;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 0 20px;
+      box-sizing: border-box;
+    }
+
+    .profile-pic {
+      width: 15rem;
+      height: 15rem;
+      border-radius: 5%;
+      background-color: rgba(255, 255, 255, 0.1);
+      object-fit: cover;
+      box-shadow: 0px 0px 3px rgba(255, 255, 255, 0.5);
+      animation: fadeInLogo 1.5s ease-out forwards;
+      opacity: 0;
+    }
+
+    h1 {
+      font-size: 1.75rem;
+      margin: 10px 0 5px;
+      color: #00ffcc;
+      animation: fadeIn 0.95s ease-out 1.5s forwards;
+      opacity: 0;
+    }
+
+    h1:last-of-type {
+      animation-delay: 2s;
+    }
+
+    p {
+      font-size: 1rem;
+      color: #ccc;
+      animation: fadeIn 0.95s ease-out 2.8s forwards;
+      opacity: 0;
+      max-width: 90%;
+    }
+
+    footer {
+      position: absolute;
+      bottom: 40px;
+      font-size: 0.75rem;
+      color: #888;
+      width: 100%;
+      text-align: center;
+    }
+
+    .loader_ {
+      display: none; /* kept as placeholder */
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInLogo {
+      from {
+        opacity: 0;
+        transform: translateY(-50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .install-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #00ffcc;
+      color: #000;
+      border: none;
+      padding: 10px 16px;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+      z-index: 1000;
+    }
+
+    @media (max-height: 500px) {
+      .profile-pic {
+        width: 15rem;
+        height: 15rem;
+      }
+
+      h1 {
+        font-size: 1.4rem;
+      }
+
+      p {
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="overlay"></div>
+  <div class="container" id="container">
+    <img src="unrav.png" alt="Unraveled" class="profile-pic" />
+    <h1>Unraveled</h1>
+    <h1>By: Autumn Morrow</h1>
+    <p>This site is currently under construction.<br>Check back soon to book appointments and more.</p>
+    <div class="loader_"></div>
+    <footer>© 2025 Unraveled Massage Therapy | All rights reserved</footer>
+  </div>
+
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/service-worker.js')
+          .then(reg => console.log('ServiceWorker registered:', reg.scope))
+          .catch(err => console.error('ServiceWorker registration failed:', err));
+      });
+    }
+
     let deferredPrompt;
-
     window.addEventListener('beforeinstallprompt', (e) => {
-        e.preventDefault();
-        deferredPrompt = e;
+      e.preventDefault();
+      deferredPrompt = e;
 
-        // Create and show custom install button
-        const installBtn = document.createElement('button');
-        installBtn.textContent = 'Install App';
-        installBtn.style.position = 'fixed';
-        installBtn.style.bottom = '20px';
-        installBtn.style.right = '20px';
-        installBtn.style.padding = '10px 20px';
-        installBtn.style.fontSize = '1rem';
-        installBtn.style.zIndex = '1000';
-        installBtn.style.background = '#00ffcc';
-        installBtn.style.color = '#000';
-        installBtn.style.border = 'none';
-        installBtn.style.borderRadius = '10px';
-        installBtn.style.cursor = 'pointer';
+      const installBtn = document.createElement('button');
+      installBtn.textContent = 'Install App';
+      installBtn.className = 'install-btn';
 
-        installBtn.onclick = () => {
-            deferredPrompt.prompt();
-            deferredPrompt.userChoice.then(choice => {
-                if (choice.outcome === 'accepted') {
-                    console.log('User accepted install');
-                } else {
-                    console.log('User dismissed install');
-                }
-                deferredPrompt = null;
-                installBtn.remove();
-            });
-        };
+      installBtn.onclick = () => {
+        deferredPrompt.prompt();
+        deferredPrompt.userChoice.then(choice => {
+          if (choice.outcome === 'accepted') {
+            console.log('App installed');
+          } else {
+            console.log('Install dismissed');
+          }
+          deferredPrompt = null;
+          installBtn.remove();
+        });
+      };
 
-        document.getElementById('container').appendChild(installBtn);
+      document.body.appendChild(installBtn);
     });
-</script>
-
+  </script>
+</body>
 </html>
